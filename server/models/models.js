@@ -1,11 +1,12 @@
+const mongoose = require("mongoose");
 
-const mongoose = require('mongoose');
+const BlogSchema = new mongoose.Schema({
+    title:          { type: "String",    required: true },
+    author:         { type: "String",    required: true },
+    color:          { type: "String"                    },
+    blog:           { type: "String"                    }
+});
 
-const BlogpostSchema = new mongoose.Schema({
-    title:      { type: String, required: true },
-    author:     { type: String, required: true },
-    blog:       { type: String                 },
-    color:      { type: String                 }
-})
+const Blog = mongoose.model("blog", BlogSchema);
 
-module.exports = BlogpostSchema
+module.exports = Blog;

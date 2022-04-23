@@ -4,7 +4,9 @@
   "description": "blogpost backend",
   "main": "server.js",
   "scripts": {
-    "test": "dev"
+    "test": "dev",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "lodash": "^4.17.21",
     "mongoose": "^6.3.0"
   },
   "devDependencies": {

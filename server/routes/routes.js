@@ -1,32 +1,20 @@
-const Express = require('express')
-const Router = Express.Router()
-const Lodash = require('lodash')
+
+const express = require('express')
+const Router = express.Router();
 
 const {
-    fetchBlog,
+    fetchBlogs,
     createBlog,
     editBlog,
     deleteBlog
-} = require('../controller/blogpost')
+} = require("../controller/blogpost");
 
-//GET request
-Router.get('/', async (req, res) => {
-    try {
-        if(!Lodash.isUndefined(res.locals.status)) {
-            res.locals.status = {
-                content: await fetchBlog(res.locals.query),
-                code: 200 
-            }
-        }
-    } catch(err) {
-        res.locals.status = {
-            content: {
-                message: Lodash.isUndefined(error.statusCode)
-                    ? 'The server has encountered an unexpected internal error.'
-                    : error.message
-            },
-            code: Lodash.isUndefined(error.statusCode) ? 500 : error.statusCode,
-            error: error
-        }
-    }
-})
+Router.get("/", fetchBlogs);
+
+Router.post("/", createBlog);
+
+Router.put("/:id", editBlog);
+
+Router.delete("/:id", deleteBlog);
+
+module.exports = Router;
